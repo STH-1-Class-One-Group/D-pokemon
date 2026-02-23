@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - deploy-test   # 테스트 브랜치도 배포
 
 jobs:
   deploy:
@@ -21,7 +20,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-        "homepage": "."
 
       - name: Install dependencies
         run: npm install
@@ -32,8 +30,8 @@ jobs:
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
-          apiToken: ${{ q-t6whFOVbsyBGbkuRQ4nYWyDPkRdQC8hjC7TtY2}}
-          accountId: ${{ 7c0b152c6b6944de8ef3a9d2894ff006 }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: "D-pokemon"
           directory: "dist"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
