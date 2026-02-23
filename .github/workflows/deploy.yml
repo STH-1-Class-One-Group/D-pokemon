@@ -2,7 +2,9 @@ name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [ "main" ] # 적용할 브랜치 네임
+    branches:
+      - main
+      - deploy-test   # 테스트 브랜치도 배포
 
 jobs:
   deploy:
@@ -10,6 +12,7 @@ jobs:
     permissions:
       contents: read
       deployments: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,17 +22,18 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install & Build
-        run: |
-          npm install
-          npm run build
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}   # 클라우드 플레어에서 직접 발급
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} # 클라우드 플레어 주소창 일부
-          projectName: "sylk" # 프로젝트 네임 변경 가능하나, 클라우드플레어 프로젝트 이름과 같아야 함.
-          directory: "build"
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: "D-pokemon"
+          directory: "dist"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref || github.ref_name }} # 자동 할당
+          branch: ${{ github.ref_name }}
