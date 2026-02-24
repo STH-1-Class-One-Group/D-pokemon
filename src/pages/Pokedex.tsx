@@ -1,6 +1,6 @@
 import { type PokemonSummary } from '../types/pokemon';
 import PokemonList from '../components/pokedex/PokemonList';
-import '../components/pokedex/pokedex.css';
+import '../components/pokedex/Pokedex.css';
 
 interface PokedexProps {
     pokemonList: PokemonSummary[];
