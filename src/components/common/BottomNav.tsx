@@ -1,7 +1,11 @@
+// src/components/common/BottomNav.tsx
+import './BottomNav.css';
+
 export default function BottomNav() {
     return (
-        <nav style={{ position: 'fixed', bottom: 0, width: '100%', background: '#eee' }}>
-        <ul style={{ display: 'flex', justifyContent: 'space-around', listStyle: 'none', padding: '10px' }}>
+        // style={...} 삭제하고 className 사용!
+        <nav className="bottom-nav">
+        <ul>
             <li>홈</li>
             <li>도감</li>
             <li>퀴즈</li>

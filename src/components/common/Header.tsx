@@ -1,8 +1,12 @@
-export default function Header() {
+// src/components/common/Header.tsx
+import './Header.css';
+
+    export default function Header() {
     return (
-        <header style={{ borderBottom: '1px solid #ccc', padding: '10px' }}>
+        // style={...} 삭제하고 className 사용!
+        <header className="header">
         <h1>D-Pokemon</h1>
-        {/* 여기에 나중에 메뉴들을 넣을 거예요 */}
+        {/* 메뉴가 필요하면 여기에 추가 */}
         </header>
     );
 }
