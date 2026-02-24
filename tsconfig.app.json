@@ -10,8 +10,8 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
 
-    /* Bundler mode -> Node mode로 변경 (호환성 상향) */
-    "moduleResolution": "node",
+    /* Bundler mode 사용 (Vite 프로젝트의 표준 설정입니다) */
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
@@ -22,9 +22,7 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
 }
