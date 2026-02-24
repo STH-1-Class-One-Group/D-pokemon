@@ -1,6 +1,6 @@
 // src/api/pokemonapi.ts
 import axios from 'axios';
-import type { PokemonSummary } from '../types/pokemon';
+import { type PokemonSummary } from '../types/pokemon';
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
