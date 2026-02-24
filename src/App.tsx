@@ -1,25 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+// src/App.tsx (임시 테스트용)
+import { useEffect } from 'react';
+import { getPokemonList } from './api/pokemonapi';
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const testFetch = async () => {
+      const data = await getPokemonList(20, 0);
+      console.log("🔥 API 연결 성공! 포켓몬 20마리:", data);
+    };
+    testFetch();
+  }, []);
 
-  return (
-    <>
-      <h1>Hello World!</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  return <div>배포 및 API 테스트 중...</div>;
 }
-
-export default App
