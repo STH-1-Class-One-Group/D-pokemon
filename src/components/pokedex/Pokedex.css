@@ -63,7 +63,7 @@
 }
 
 /* 4. 카드 그리드 */
-.pokemon-grid {
+.pokemon-list {
     display: grid;
     gap: 20px;
     width: 100%;
@@ -71,7 +71,7 @@
 }
 
 @media (min-width: 1024px) {
-    .pokemon-grid {
+    .pokemon-list {
         grid-template-columns: repeat(4, 1fr); /* PC는 4열 정도가 적당 */
     }
 }
