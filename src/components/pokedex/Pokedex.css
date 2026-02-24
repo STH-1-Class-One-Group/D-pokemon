@@ -1,66 +1,100 @@
-/* src/components/pokedex/pokedex.css */
-
-/* 전체 컨테이너 및 제목 */
-.pokedex-container h1 {
-    font-size: 1.5rem !important;
-    font-weight: 700;
-    color: #333;
-    margin: 24px 0 16px 20px;
-    text-align: left;
+/* 전체 컨테이너 정렬 */
+.pokedex-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 모든 요소를 중앙으로 */
+    gap: 24px;
 }
 
-/* 피그마의 Card_Grid 구조 반영 */
+/* 1. 검색 섹션 */
+.search-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-input {
+    width: 80%;
+    max-width: 500px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #e0e0e0; /* 피그마의 회색 박스 느낌 */
+    font-size: 1rem;
+    outline: none;
+}
+
+/* 2. 퀴즈 배너 */
+.quiz-banner {
+    text-align: center;
+    width: 100%;
+}
+
+.quiz-banner p {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.quiz-button {
+    padding: 10px 40px;
+    background-color: #d9d9d9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.quiz-button:hover {
+    background-color: #cccccc;
+}
+
+/* 3. 도감 제목 */
+.pokedex-container h1 {
+    font-size: 1.8rem !important;
+    font-weight: 800;
+    margin: 20px 0 10px 0 !important;
+    align-self: flex-start; /* 제목만 왼쪽 정렬 */
+}
+
+/* 4. 카드 그리드 */
 .pokemon-grid {
     display: grid;
-    /* 피그마 느낌의 넉넉한 간격 */
-    gap: 20px; 
-    padding: 20px;
-    /* 기본 2열, PC는 5열 */
+    gap: 20px;
+    width: 100%;
     grid-template-columns: repeat(2, 1fr);
 }
 
 @media (min-width: 1024px) {
     .pokemon-grid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr); /* PC는 4열 정도가 적당 */
     }
 }
 
-/* 피그마 디자인의 개별 카드 스타일 */
+/* 개별 카드 디자인 */
 .pokemon-card {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 12px;
     padding: 16px;
-    /* 부드러운 그림자 효과 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
-    text-align: center;
-    transition: transform 0.2s ease;
-    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* 마우스를 올렸을 때 피그마 느낌의 상호작용 */
-.pokemon-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* 이미지 박스: 피그마의 정사각형 박스 느낌 */
-.pokemon-card .image-placeholder {
-    width: 100% !important;
-    aspect-ratio: 1 / 1;
-    background-color: #eeeeee !important; /* 피그마의 회색 박스 느낌 */
-    border-radius: 10px;
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #eee !important;
+    border-radius: 8px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
     color: #999;
-    margin-bottom: 12px;
-}
-
-/* 포켓몬 이름 텍스트 */
-.pokemon-name {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
 }
