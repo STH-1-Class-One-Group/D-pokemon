@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+    display: flex;
+    justify-content: space-between; /* 로고와 메뉴 양옆 배치 */
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: sticky; /* 스크롤 내려도 상단 고정 (선택사항) */
+    top: 0;
+    z-index: 100;
+}
+
+    .header h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff0000; /* 포켓몬 레드 컬러 */
+    margin: 0;
+}

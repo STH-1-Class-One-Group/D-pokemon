@@ -1,0 +1,36 @@
+/* 1. PC 화면에서는 아예 안 보이게 숨김 */
+.bottom-nav {
+    display: none;
+}
+
+/* 2. 모바일 화면(768px 이하)에서만 짠! 하고 나타남 */
+@media (max-width: 768px) {
+    .bottom-nav {
+        display: block; /* 다시 보이게 설정 */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: white;
+        border-top: 1px solid #ddd;
+        z-index: 100;
+    }
+
+    .bottom-nav ul {
+        display: flex;
+        justify-content: space-around; /* 메뉴 간격 균등하게 */
+        align-items: center;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .bottom-nav li {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #555;
+        cursor: pointer;
+    }
+}
