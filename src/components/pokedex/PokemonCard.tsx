@@ -1,26 +1,41 @@
 // src/components/pokedex/PokemonCard.tsx
 
-// 1. 부모(PokemonList)로부터 받을 데이터의 형식을 정의합니다.
 interface PokemonCardProps {
     name: string;
     url: string;
 }
 
-// 2. 받은 데이터로 개별 포켓몬 카드를 그리는 컴포넌트입니다.
 function PokemonCard({ name, url }: PokemonCardProps) {
+    // 1. URL에서 도감 번호(ID)를 추출합니다. (예: .../pokemon/1/ -> 1)
+    const id = url.split('/').filter(Boolean).pop();
+
+    // 2. 고화질 공식 아트워크 이미지 주소입니다.
+    const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+
     return (
-        <div style={{
-            border: '1px solid #ddd',
-            padding: '15px',
-            margin: '10px',
-            borderRadius: '10px',
-            backgroundColor: '#f9f9f9',
-            textAlign: 'center'
-        }}>
-            {/* 포켓몬 이름 표시 */}
-            <h3 style={{ margin: '0 0 10px 0', textTransform: 'capitalize' }}>{name}</h3>
-            {/* 데이터 연결 확인을 위한 URL 표시 (나중에 이미지로 바꿀 예정!) */}
-            <p style={{ fontSize: '10px', color: '#888', wordBreak: 'break-all' }}>{url}</p>
+        <div className="pokemon-card">
+            {/* 이미지 영역 */}
+            <div className="image-placeholder">
+                <img
+                    src={imageUrl}
+                    alt={name}
+                    style={{ width: '120px', height: '120px', objectFit: 'contain' }}
+                />
+            </div>
+
+            {/* 정보 영역 */}
+            <div style={{ textAlign: 'center', marginTop: '10px' }}>
+                <span style={{ fontSize: '12px', color: '#888', fontWeight: 'bold' }}>
+                    #{id?.padStart(3, '0')}
+                </span>
+                <h3 style={{
+                    margin: '5px 0 0 0',
+                    textTransform: 'capitalize',
+                    fontSize: '1.1rem'
+                }}>
+                    {name}
+                </h3>
+            </div>
         </div>
     );
 }
