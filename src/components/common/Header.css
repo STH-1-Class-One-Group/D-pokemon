@@ -15,7 +15,7 @@
 .logo-container {
     display: flex;
     align-items: center; /* 수직 중앙 정렬 */
-    gap: 12px; /* 아이콘과 글자 사이 간격 */
+    gap: 2px; /* 아이콘과 글자 사이 간격 */
     text-decoration: none;
     color: black;
 }
