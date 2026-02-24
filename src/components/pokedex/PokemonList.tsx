@@ -1,4 +1,4 @@
-import './pokedex.css';
+import './Pokedex.css';
 import { type PokemonSummary } from '../../types/pokemon';
 import PokemonCard from './PokemonCard';
 
