@@ -1,52 +1,72 @@
 .header {
     display: flex;
-    justify-content: space-between; /* 양쪽 끝으로 밀어내기 */
-    align-items: center; /* 수직 가운데 정렬 */
-    padding: 0 20px;
-    height: 60px;
-    background-color: white; /* 흰색 배경 */
-    border-bottom: 1px solid #ddd; /* 하단 회색 선 */
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px; /* 여백을 살짝 넓혀서 시원하게 변경 */
+    height: 64px;
+    background-color: white;
+    border-bottom: 1px solid #eeeeee;
     position: sticky;
     top: 0;
     z-index: 100;
-    }
+}
 
-    /* 왼쪽 제목 스타일 */
-    .header-title a {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: black; /* 와이어프레임처럼 검은색 */
-    text-decoration: none;
-    }
-
-    /* 오른쪽 메뉴 스타일 */
-    .header-menu {
+/* 로고와 글자를 감싸는 컨테이너 */
+.logo-container {
     display: flex;
-    align-items: center;
-    gap: 10px; /* 글자 사이 간격 */
-    font-size: 1rem;
-    font-weight: 500;
-    }
-
-    .header-menu a {
+    align-items: center; /* 수직 중앙 정렬 */
+    gap: 12px; /* 아이콘과 글자 사이 간격 */
     text-decoration: none;
     color: black;
-    }
+}
 
-    .header-menu a:hover {
-    color: #ff0000; /* 마우스 올리면 포켓몬 레드 */
-    }
+/* 몬스터볼 아이콘 크기 조절 */
+.header-icon {
+    width: 32px; /* 64px 원본의 절반 크기로 선명하게 출력 */
+    height: 32px;
+    object-fit: contain;
+}
 
-    .divider {
-    color: #ccc;
-    }
+.logo-container span {
+    font-size: 1.4rem;
+    font-weight: 800; /* 글자를 조금 더 두껍게 해서 존재감 뿜뿜 */
+    letter-spacing: -0.5px;
+}
 
-    /* 📱 모바일에서는 상단 메뉴 숨기기 (하단 탭바가 있으니까!) */
-    @media (max-width: 768px) {
-    .header-menu {
-        display: none;
+/* 오른쪽 메뉴 스타일 */
+.header-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.header-menu a {
+    text-decoration: none;
+    color: #555; /* 부드러운 진회색 */
+    transition: color 0.2s;
+}
+
+.header-menu a:hover {
+    color: #E3350D; /* 포켓몬 레드 포인트 컬러 */
+}
+
+.divider {
+    color: #e0e0e0;
+}
+
+/* 📱 모바일 최적화 */
+@media (max-width: 768px) {
+    .header {
+        padding: 0 16px;
     }
     
-    /* 모바일엔 제목만 가운데 정렬하고 싶으면 아래 주석 해제 */
-    /* .header { justify-content: center; } */
+    .header-menu {
+        display: none; /* 모바일은 하단바가 있으니 숨김 */
+    }
+
+    .logo-container span {
+        font-size: 1.2rem; /* 모바일에서는 제목 크기 살짝 축소 */
+    }
 }
