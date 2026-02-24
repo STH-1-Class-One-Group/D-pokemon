@@ -1,21 +1,52 @@
 .header {
-    width: 100%;
-    height: 60px;
-    border-bottom: 1px solid #ddd;
-    background-color: white;
     display: flex;
-    justify-content: space-between; /* 로고와 메뉴 양옆 배치 */
-    align-items: center;
+    justify-content: space-between; /* 양쪽 끝으로 밀어내기 */
+    align-items: center; /* 수직 가운데 정렬 */
     padding: 0 20px;
-    box-sizing: border-box;
-    position: sticky; /* 스크롤 내려도 상단 고정 (선택사항) */
+    height: 60px;
+    background-color: white; /* 흰색 배경 */
+    border-bottom: 1px solid #ddd; /* 하단 회색 선 */
+    position: sticky;
     top: 0;
     z-index: 100;
-}
+    }
 
-    .header h1 {
+    /* 왼쪽 제목 스타일 */
+    .header-title a {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ff0000; /* 포켓몬 레드 컬러 */
-    margin: 0;
+    color: black; /* 와이어프레임처럼 검은색 */
+    text-decoration: none;
+    }
+
+    /* 오른쪽 메뉴 스타일 */
+    .header-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 글자 사이 간격 */
+    font-size: 1rem;
+    font-weight: 500;
+    }
+
+    .header-menu a {
+    text-decoration: none;
+    color: black;
+    }
+
+    .header-menu a:hover {
+    color: #ff0000; /* 마우스 올리면 포켓몬 레드 */
+    }
+
+    .divider {
+    color: #ccc;
+    }
+
+    /* 📱 모바일에서는 상단 메뉴 숨기기 (하단 탭바가 있으니까!) */
+    @media (max-width: 768px) {
+    .header-menu {
+        display: none;
+    }
+    
+    /* 모바일엔 제목만 가운데 정렬하고 싶으면 아래 주석 해제 */
+    /* .header { justify-content: center; } */
 }

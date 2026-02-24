@@ -1,12 +1,14 @@
-/* 1. PC 화면에서는 아예 안 보이게 숨김 */
+/* 기존 코드는 그대로 두고, 아래 내용을 수정/추가해주세요 */
+
+/* 1. PC 화면에서는 숨김 */
 .bottom-nav {
     display: none;
-}
+    }
 
-/* 2. 모바일 화면(768px 이하)에서만 짠! 하고 나타남 */
-@media (max-width: 768px) {
+    /* 2. 모바일 화면 설정 */
+    @media (max-width: 768px) {
     .bottom-nav {
-        display: block; /* 다시 보이게 설정 */
+        display: block;
         position: fixed;
         bottom: 0;
         left: 0;
@@ -19,7 +21,7 @@
 
     .bottom-nav ul {
         display: flex;
-        justify-content: space-around; /* 메뉴 간격 균등하게 */
+        justify-content: space-around;
         align-items: center;
         height: 100%;
         margin: 0;
@@ -28,9 +30,24 @@
     }
 
     .bottom-nav li {
-        font-size: 0.9rem;
+        flex: 1; /* 버튼 크기 균등하게 */
+        text-align: center;
+    }
+
+    /* 👇 새로 추가된 부분: 링크(글자) 스타일 꾸미기 */
+    .bottom-nav a {
+        text-decoration: none; /* 밑줄 제거 */
+        color: #555; /* 글자색 회색 */
         font-weight: bold;
-        color: #555;
-        cursor: pointer;
+        font-size: 0.9rem;
+        display: block; /* 터치 영역 넓히기 */
+        width: 100%;
+        height: 100%;
+        padding: 10px 0; /* 위아래 여백 */
+    }
+
+    /* 눌렀을 때(또는 마우스 올렸을 때) 색상 변경 */
+    .bottom-nav a:hover {
+        color: #ff0000; /* 포켓몬 레드 */
     }
 }
