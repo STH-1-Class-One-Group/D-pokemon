@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { getPokemonList } from '../api/pokemonapi'; 
+import { getPokemonList } from '../api/pokemonapi';
 import { type PokemonSummary } from '../types/pokemon';
 import PokemonList from '../components/pokedex/PokemonList';
+import Loading from '../components/common/Loading';
 import '../components/pokedex/Pokedex.css';
 
 function Pokedex() {
@@ -13,15 +14,15 @@ function Pokedex() {
     // 👷‍♂️ 데이터를 가져오는 함수
     const loadMore = async () => {
         // 이미 로딩 중이거나 데이터를 다 가져왔다면 중단 🛡️
-        if (isLoading) return; 
-        
+        if (isLoading) return;
+
         setIsLoading(true);
         try {
             const data = await getPokemonList(20, offset);
-            
+
             if (data && data.length > 0) {
                 console.log(`🔥 데이터 로드 완료 (offset: ${offset}):`, data);
-                
+
                 setPokemonList(prev => [...prev, ...data]);
                 setOffset(prevOffset => prevOffset + 20);
             }
@@ -54,8 +55,13 @@ function Pokedex() {
 
     return (
         <div className="pokedex-container">
+            {/* 상단 UI 영역 */}
             <div className="search-section">
-                <input type="text" placeholder="포켓몬을 검색하세요!" className="search-input" />
+                <input
+                    type="text"
+                    placeholder="포켓몬을 검색하세요!"
+                    className="search-input"
+                />
             </div>
 
             <div className="quiz-banner">
@@ -69,11 +75,12 @@ function Pokedex() {
             <PokemonList list={pokemonList} />
 
             {/* 무한 스크롤 감지 바닥 🏁 */}
-            <div 
-                ref={observerTarget} 
+            <div
+                ref={observerTarget}
                 style={{ height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
             >
-                {isLoading && <p>새로운 포켓몬을 불러오는 중... 🏃‍♂️</p>}
+                {/* 로딩 상태일 때 미리 만들어둔 Loading 컴포넌트를 보여줍니다 */}
+                {isLoading && <Loading />}
             </div>
         </div>
     );
