@@ -24,6 +24,7 @@ export const getPokemonList = async (limit: number, offset: number) => {
         id: Number(id),
         korean_name: koreanNameRow ? koreanNameRow.name : pokemon.name // 한글 이름 없으면 영어로 대체
       };
+      
     })
   );
 

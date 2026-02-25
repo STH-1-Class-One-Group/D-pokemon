@@ -5,7 +5,7 @@
     max-width: 1000px;
     margin: 0 auto;
     
-    /* 🛠️ [수정] 헤더에 가려지지 않게 위쪽 여백만 늘렸습니다! (20px -> 120px) */
+    /* 헤더에 가려지지 않게 위쪽 여백만 늘렸습니다! (20px -> 120px) */
     padding-top: 120px; 
     padding-bottom: 20px;
     padding-left: 20px;
@@ -30,7 +30,7 @@
     padding: 14px 24px;
     border: 2px solid transparent;
     border-radius: 30px; 
-    background-color: #f0f0f0; 
+    background-color: #e7e7e7; 
     font-size: 1rem;
     outline: none;
     transition: all 0.3s ease;
@@ -94,6 +94,16 @@
     align-items: center;
     transition: all 0.25s ease;
     cursor: pointer;
+}
+
+/* 💡 한글 이름이 잘 보이도록 추가한 스타일 (범인은 여기!) */
+.pokemon-card h3 {
+    margin: 5px 0 0 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #333;
+    /* 영어 첫글자 대문자 강제 변환을 해제해야 한글 데이터가 꼬이지 않습니다. */
+    text-transform: none !important; 
 }
 
 /* 마우스 올렸을 때 효과 (그대로 유지) */
