@@ -156,10 +156,11 @@
 
     .github-link:hover { color: white; }
 
-    /* 모바일 대응 */
+    /* 모바일 전용 방 */
     @media (max-width: 768px) {
-    .glass-card { padding: 40px 20px; width: 85%; }
-    .main-title { font-size: 2.5rem; }
-    .button-group { flex-direction: column; width: 100%; }
-    .modern-btn { justify-content: center; }
+    .home-container::before {
+        /* 모바일에서는 억지로 늘리면 흉하니까, 비율 유지하면서 꽉 채우기 (가장자리는 좀 잘림) */
+        background-size: cover; 
+        background-position: center center;
+    }
     }

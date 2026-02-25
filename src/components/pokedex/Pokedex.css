@@ -1,15 +1,23 @@
+/* src/components/pokedex/Pokedex.css */
+
 /* 전체 컨테이너 정렬 */
 .pokedex-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    
+    /* 🛠️ [수정] 헤더에 가려지지 않게 위쪽 여백만 늘렸습니다! (20px -> 120px) */
+    padding-top: 120px; 
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
     display: flex;
     flex-direction: column;
     align-items: center; /* 모든 요소를 중앙으로 */
     gap: 24px;
 }
 
-/* 1. 검색 섹션 */
+/* 1. 검색 섹션 (그대로 유지) */
 .search-section {
     width: 100%;
     display: flex;
@@ -21,7 +29,7 @@
     max-width: 500px;
     padding: 14px 24px;
     border: 2px solid transparent;
-    border-radius: 30px; /* 좀 더 부드러운 라운드 */
+    border-radius: 30px; 
     background-color: #f0f0f0; 
     font-size: 1rem;
     outline: none;
@@ -34,22 +42,22 @@
     box-shadow: 0 4px 12px rgba(255, 83, 80, 0.1);
 }
 
-/* 2. 퀴즈 배너 (필요시 제거 가능하지만 스타일은 유지) */
+/* 2. 퀴즈 배너 (그대로 유지) */
 .quiz-banner {
-    display: none; /* 퀴즈를 보이지 않게 처리 */
+    display: none; 
 }
 
-/* 3. 도감 제목 - 중앙 정렬로 수정 */
+/* 3. 도감 제목 (그대로 유지) */
 .pokedex-container h1 {
     font-size: 2.2rem !important;
     font-weight: 800;
     margin: 40px 0 10px 0 !important;
-    align-self: center; /* 왼쪽 정렬에서 중앙 정렬로 변경 ✨ */
+    align-self: center; 
     color: #333;
     position: relative;
 }
 
-/* 제목 하단 포인트 데코레이션 */
+/* 제목 하단 포인트 데코레이션 (그대로 유지) */
 .pokedex-container h1::after {
     content: "";
     display: block;
@@ -60,7 +68,7 @@
     border-radius: 2px;
 }
 
-/* 4. 카드 그리드 */
+/* 4. 카드 그리드 (그대로 유지) */
 .pokemon-list {
     display: grid;
     gap: 24px;
@@ -75,10 +83,10 @@
     }
 }
 
-/* 개별 카드 디자인 */
+/* 개별 카드 디자인 (그대로 유지) */
 .pokemon-card {
     background-color: #fff;
-    border-radius: 16px; /* 더 깔끔한 라운드 */
+    border-radius: 16px; 
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     display: flex;
@@ -88,7 +96,7 @@
     cursor: pointer;
 }
 
-/* 마우스 올렸을 때 효과 추가 */
+/* 마우스 올렸을 때 효과 (그대로 유지) */
 .pokemon-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0,0,0,0.12);
