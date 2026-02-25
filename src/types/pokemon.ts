@@ -13,6 +13,7 @@ export interface PokemonSummary {
 export interface PokemonDetail {
   id: number;
   name: string;
+  korean_name?: string;
   sprites: {
     front_default: string; // 기본 이미지
     other: {
