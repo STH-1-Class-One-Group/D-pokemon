@@ -4,16 +4,28 @@ import { type PokemonSummary } from '../types/pokemon';
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
-// C파트 재혁님의 '무한 스크롤'을 위해 limit와 offset을 인자로 받습니다.
-export const getPokemonList = async (limit: number = 20, offset: number = 0) => {
-  try {
-    // 비동기(async/await)로 데이터를 가져옵니다.
-    const response = await axios.get(`${BASE_URL}/pokemon?limit=${limit}&offset=${offset}`);
-    
-    // 결과값: { results: [ {name, url}, ... ] }
-    return response.data.results as PokemonSummary[];
-  } catch (error) {
-    console.error("포켓몬 리스트를 가져오는데 실패했습니다.", error);
-    return [];
-  }
+// 예시 코드 (민권님의 기존 코드 구조에 맞춰 적용하세요)
+export const getPokemonListWithKorean = async (limit: number, offset: number) => {
+  // 1. 기본 리스트 가져오기
+  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+  const basicList = response.data.results;
+
+  // 2. 각 포켓몬의 상세 정보(한글 이름)를 병렬로 가져오기 (Promise.all 활용!)
+  const detailedList = await Promise.all(
+    basicList.map(async (pokemon: any) => {
+      const id = pokemon.url.split('/').filter(Boolean).pop(); // URL에서 ID 추출
+      const speciesRes = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+      
+      // 한글 이름 찾기
+      const koreanNameRow = speciesRes.data.names.find((name: any) => name.language.name === 'ko');
+      
+      return {
+        ...pokemon,
+        id: Number(id),
+        korean_name: koreanNameRow ? koreanNameRow.name : pokemon.name // 한글 이름 없으면 영어로 대체
+      };
+    })
+  );
+
+  return detailedList;
 };
