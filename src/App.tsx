@@ -1,14 +1,9 @@
+import { useEffect, useState, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/common/Layout';
 import Home from './pages/Home';
 import Pokedex from './pages/Pokedex';
 import Quiz from './pages/Quiz';
-<<<<<<< tlswogur0603-cpu/issue9
-import './App.css';
-
-function App() {
-  // 짐을 다 옮겼으니 여기 있던 모든 useState와 useEffect는 지웠습니다! ✨
-=======
 import { getPokemonListWithKorean } from './api/pokemonapi'; 
 import { type PokemonSummary } from './types/pokemon';
 import './App.css';
@@ -69,17 +64,21 @@ function App() {
     }
     return () => observer.disconnect();
   }, [offset, isLoading]); 
->>>>>>> main
 
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
-          
-          {/* ✅ Pokedex는 이제 스스로 데이터를 관리하니까 props를 다 지워줍니다! */}
-          <Route path="/pokedex" element={<Pokedex />} />
-          
+          <Route path="/pokedex" element={
+            <>
+              <Pokedex pokemonList={pokemonList} />
+              {/* 바닥 감지용 타겟을 Pokedex 하단에 배치 */}
+              <div ref={observerTarget} style={{ height: '60px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                {isLoading && <p style={{ color: '#888' }}>새로운 포켓몬을 찾는 중... 🔍</p>}
+              </div>
+            </>
+          } />
           <Route path="/quiz" element={<Quiz />} />
         </Route>
       </Routes>
