@@ -55,7 +55,7 @@ function Pokedex() {
 
     return (
         <div className="pokedex-container">
-            {/* 상단 UI 영역 */}
+            {/* 1. 상단 검색 영역 (중앙 정렬 유지) */}
             <div className="search-section">
                 <input
                     type="text"
@@ -64,22 +64,26 @@ function Pokedex() {
                 />
             </div>
 
-            <div className="quiz-banner">
-                <p>오늘의 포켓몬 퀴즈에 도전해보세요!</p>
-                <button className="quiz-button">퀴즈 시작</button>
-            </div>
+            {/* ❌ 퀴즈 배너 섹션 삭제됨 */}
 
+            {/* 2. 도감 제목 (CSS에서 align-self: center 적용으로 중앙 배치) */}
             <h1>포켓몬 도감</h1>
 
-            {/* 포켓몬 목록 🎮 */}
+            {/* 3. 포켓몬 목록 영역 */}
             <PokemonList list={pokemonList} />
 
-            {/* 무한 스크롤 감지 바닥 🏁 */}
+            {/* 4. 무한 스크롤 감지 및 로딩 표시 영역 */}
             <div
                 ref={observerTarget}
-                style={{ height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                style={{ 
+                    height: '100px', 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center',
+                    width: '100%' 
+                }}
             >
-                {/* 로딩 상태일 때 미리 만들어둔 Loading 컴포넌트를 보여줍니다 */}
+                {/* 로딩 중일 때만 Loading 컴포넌트 노출 */}
                 {isLoading && <Loading />}
             </div>
         </div>
