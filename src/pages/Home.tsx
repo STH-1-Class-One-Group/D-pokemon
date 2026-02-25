@@ -14,7 +14,7 @@ const Home = () => {
         <main className="home-content">
             {/* 깔끔한 카드형 컨테이너 */}
             <div className="glass-card">
-            <h1 className="main-title">D-POKEMON</h1>
+            <h1 className="main-title">DOKEMON</h1>
             <p className="sub-title">탐색과 도전이 함께하는 포켓몬 도감</p>
 
             <div className="button-group">

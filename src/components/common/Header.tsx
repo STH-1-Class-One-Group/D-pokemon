@@ -9,7 +9,7 @@ export default function Header() {
             <h1 className="header-title">
                 <Link to="/" className="logo-container">
                     <img src={pokeball} alt="Pokeball" className="header-icon" />
-                    <span>D-Pokemon</span>
+                    <span>Dokemon</span>
                 </Link>
             </h1>
 
