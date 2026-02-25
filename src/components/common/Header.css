@@ -1,72 +1,115 @@
+/* src/components/common/Header.css */
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 24px; /* 여백을 살짝 넓혀서 시원하게 변경 */
-    height: 64px;
-    background-color: white;
-    border-bottom: 1px solid #eeeeee;
-    position: sticky;
+    padding: 0 40px; /* 좌우 여백을 넓혀서 시원하게 */
+    height: 70px; /* 높이를 살짝 키워 여유 있게 */
+
+    /* ✨ 핵심: 배경을 반투명하게 만들고 블러 처리 */
+    background-color: rgba(0, 0, 0, 0.3);
+    
+    /* 🔥 [오류 수정] 사파리(아이폰/맥) 호환성 코드를 추가했습니다! */
+    -webkit-backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px); /* 뒤가 은은하게 흐려짐 */
+    
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 아주 얇은 유리 테두리 */
+
+    /* 헤더를 화면 위에 띄움 */
+    position: fixed;
     top: 0;
-    z-index: 100;
-}
+    left: 0;
+    width: 100%;
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+    z-index: 1000;
+    }
 
-/* 로고와 글자를 감싸는 컨테이너 */
-.logo-container {
-    display: flex;
-    align-items: center; /* 수직 중앙 정렬 */
-    gap: 2px; /* 아이콘과 글자 사이 간격 */
-    text-decoration: none;
-    color: black;
-}
-
-/* 몬스터볼 아이콘 크기 조절 */
-.header-icon {
-    width: 32px; /* 64px 원본의 절반 크기로 선명하게 출력 */
-    height: 32px;
-    object-fit: contain;
-}
-
-.logo-container span {
-    font-size: 1.4rem;
-    font-weight: 800; /* 글자를 조금 더 두껍게 해서 존재감 뿜뿜 */
-    letter-spacing: -0.5px;
-}
-
-/* 오른쪽 메뉴 스타일 */
-.header-menu {
+    /* 로고 스타일 업그레이드 */
+    .logo-container {
     display: flex;
     align-items: center;
-    gap: 15px;
-    font-size: 0.95rem;
-    font-weight: 600;
-}
-
-.header-menu a {
+    gap: 12px;
     text-decoration: none;
-    color: #555; /* 부드러운 진회색 */
-    transition: color 0.2s;
-}
-
-.header-menu a:hover {
-    color: #E3350D; /* 포켓몬 레드 포인트 컬러 */
-}
-
-.divider {
-    color: #e0e0e0;
-}
-
-/* 📱 모바일 최적화 */
-@media (max-width: 768px) {
-    .header {
-        padding: 0 16px;
+    color: white;
+    transition: opacity 0.3s;
     }
-    
-    .header-menu {
-        display: none; /* 모바일은 하단바가 있으니 숨김 */
+
+    .logo-container:hover {
+    opacity: 0.8;
+    }
+
+    .header-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* 아이콘 발광 효과 */
     }
 
     .logo-container span {
-        font-size: 1.2rem; /* 모바일에서는 제목 크기 살짝 축소 */
+    font-family: 'Montserrat', sans-serif; /* 메인 폰트 적용 */
+    font-size: 1.5rem;
+    font-weight: 900; /* 아주 두껍게 */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 메뉴 스타일 */
+    .header-menu {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* 메뉴 간격 넓게 */
+    }
+
+    .header-menu a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255, 255, 255, 0.7); /* 기본은 살짝 투명 */
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    position: relative;
+    }
+
+    /* 메뉴 호버 효과: 글자가 하얘지고 밑에 불 들어옴 */
+    .header-menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    .header-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s;
+    }
+
+    .header-menu a:hover::after {
+    width: 100%;
+    }
+
+    /* 촌스러운 파이프(|) 구분선 숨기기 */
+    .divider {
+    display: none;
+    }
+
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+    .header {
+        padding: 0 20px;
+        height: 60px;
+    }
+    .header-menu {
+        display: none;
+    }
+    .logo-container span {
+        font-size: 1.2rem;
     }
 }

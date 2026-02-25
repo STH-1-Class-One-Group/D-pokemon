@@ -1,11 +1,9 @@
-/* 기존 코드는 그대로 두고, 아래 내용을 수정/추가해주세요 */
+/* src/components/common/BottomNav.css */
 
-/* 1. PC 화면에서는 숨김 */
 .bottom-nav {
     display: none;
     }
 
-    /* 2. 모바일 화면 설정 */
     @media (max-width: 768px) {
     .bottom-nav {
         display: block;
@@ -14,9 +12,13 @@
         left: 0;
         width: 100%;
         height: 60px;
-        background-color: white;
-        border-top: 1px solid #ddd;
+        /* 배경 검정색 */
+        background-color: #0a0a0a; 
+        /* 위쪽 테두리 어둡게 */
+        border-top: 1px solid #333; 
         z-index: 100;
+        /* 상단 그림자 추가 */
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
     }
 
     .bottom-nav ul {
@@ -30,24 +32,27 @@
     }
 
     .bottom-nav li {
-        flex: 1; /* 버튼 크기 균등하게 */
+        flex: 1;
         text-align: center;
     }
 
-    /* 👇 새로 추가된 부분: 링크(글자) 스타일 꾸미기 */
     .bottom-nav a {
-        text-decoration: none; /* 밑줄 제거 */
-        color: #555; /* 글자색 회색 */
+        text-decoration: none;
+        /* 글자색 밝은 회색 */
+        color: #888; 
         font-weight: bold;
         font-size: 0.9rem;
-        display: block; /* 터치 영역 넓히기 */
+        display: block;
         width: 100%;
         height: 100%;
-        padding: 10px 0; /* 위아래 여백 */
+        padding: 10px 0;
+        /* 대문자 적용 */
+        text-transform: uppercase; 
     }
 
-    /* 눌렀을 때(또는 마우스 올렸을 때) 색상 변경 */
+    /* 선택되거나 눌렀을 때 */
     .bottom-nav a:hover {
-        color: #ff0000; /* 포켓몬 레드 */
-    }
-}
+        color: white; /* 흰색으로 변경 */
+        text-shadow: 0 0 5px white;
+  }
+}   
