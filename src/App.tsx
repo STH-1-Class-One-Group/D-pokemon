@@ -4,7 +4,7 @@ import Layout from './components/common/Layout';
 import Home from './pages/Home';
 import Pokedex from './pages/Pokedex';
 import Quiz from './pages/Quiz';
-import { getPokemonList } from './api/pokemonapi'; 
+import { getPokemonListWithKorean } from './api/pokemonapi'; 
 import { type PokemonSummary } from './types/pokemon';
 import './App.css';
 
@@ -19,7 +19,7 @@ function App() {
     const fetchInitialData = async () => {
       setIsLoading(true);
       try {
-        const data = await getPokemonList(20, 0);
+        const data = await getPokemonListWithKorean(20, 0);
         setPokemonList(data);
         console.log("🔥 첫 데이터 로드 완료!");
       } catch (error) {
@@ -37,7 +37,7 @@ function App() {
     setIsLoading(true);
     try {
       const newOffset = offset + 20;
-      const data = await getPokemonList(20, newOffset);
+      const data = await getPokemonListWithKorean(20, newOffset);
       if (data && data.length > 0) {
         setPokemonList(prev => [...prev, ...data]);
         setOffset(newOffset);
