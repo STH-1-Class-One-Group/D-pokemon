@@ -5,7 +5,7 @@ import { type PokemonSummary } from '../types/pokemon';
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
 // 예시 코드 (민권님의 기존 코드 구조에 맞춰 적용하세요)
-export const getPokemonListWithKorean = async (limit: number, offset: number) => {
+export const getPokemonList = async (limit: number, offset: number) => {
   // 1. 기본 리스트 가져오기
   const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
   const basicList = response.data.results;
