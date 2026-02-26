@@ -1,10 +1,9 @@
 /* src/components/pokedex/Pokedex.css */
-
 /* --- 1. 전체 레이아웃 --- */
 .pokedex-container {
     max-width: 1200px;
     margin: 0 auto;
-    /* 상단 여백 조정 (너무 넓으면 120px -> 100px로 줄이세요) */
+    /* 상단 여백 조정 (너무 넓으면 120px -> 100px로 줄이기) */
     padding: 100px 20px 40px 20px;
     
     display: flex;
@@ -27,7 +26,7 @@
     padding: 16px 24px;
     border: 2px solid transparent;
     border-radius: 50px;
-    background-color: #f0f2f5;
+    background-color: #efeff1;
     font-size: 1.1rem;
     outline: none;
     transition: all 0.3s ease;

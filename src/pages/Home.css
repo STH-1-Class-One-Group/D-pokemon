@@ -1,6 +1,6 @@
-    /* src/pages/Home.css */
+/* src/pages/Home.css */
 
-    .home-container {
+.home-container {
     height: 100vh;
     width: 100%;
     position: relative;
@@ -10,81 +10,86 @@
     justify-content: space-between;
     padding-top: 80px;
     box-sizing: border-box;
-    }
+}
 
-    /* 배경 이미지 설정 (기존 유지, 밝기만 조절) */
-    .home-container::before {
+/* 배경 이미지 */
+.home-container::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
     background-image: url('../assets/main.jpg'); 
     background-size: 100% 100%;
     background-position: center;
     z-index: -2;
-    filter: brightness(0.6); /* 배경 적당히 어둡게 */
-    }
+    filter: brightness(0.6);
+}
 
-    .home-content {
+.home-content {
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center; /* 화면 중앙 정렬 */
+    justify-content: center;
     padding-bottom: 50px;
-    }
+}
 
-    /* 핵심 디자인: 유리 카드 컨테이너 */
-    .glass-card {
-    background: rgba(0, 0, 0, 0.6); /* 반투명 검정 배경 */
-    backdrop-filter: blur(15px);     /* 뒷배경 흐리게 */
-    -webkit-backdrop-filter: blur(10px);
-    
+/* 유리 카드 */
+.glass-card {
+    background: rgba(0, 0, 0, 0.45);  /* 너무 어둡지 않게 조정 */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
     padding: 60px 80px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
-    max-width: 600px;
+    gap: 25px;
+    max-width: 650px;
     width: 90%;
-    }
+}
 
-    /* 깔끔한 타이틀 (그라데이션 X, 순수 흰색) */
-    .main-title {
+/* 홈 메인 로고 (이미지) */
+.home-main-logo {
+    width: 500px;        /* 로고 크기 줄임 */
+    max-width: 90%;
+    height: auto;
+    margin-bottom: 1px;
+
+    transform: scaleX(1.05);   /* 살짝 가로 강조 */
+    transform-origin: center;
+
+    filter: drop-shadow(0 6px 15px rgba(0,0,0,0.6));
+}
+
+/* 서브 타이틀 */
+.sub-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 4rem; /* 과하지 않은 크기 */
-    font-weight: 800;
-    margin: 0;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    line-height: 1.1;
-    }
-
-    .sub-title {
-    font-family: 'Montserrat', sans-serif; /* 한글도 고딕체 적용됨 */
     font-size: 1.2rem;
     color: #cccccc;
     font-weight: 500;
     margin: 0;
     letter-spacing: 1px;
-    }
+}
 
-    /* 버튼 그룹 (가로 배치) */
-    .button-group {
+/* 버튼 그룹 */
+.button-group {
     display: flex;
     gap: 20px;
     margin-top: 20px;
     width: 100%;
     justify-content: center;
-    }
+}
 
-    /* 모던 버튼 스타일 */
-    .modern-btn {
-    flex: 1; /* 버튼 크기 동일하게 */
+/* 모던 버튼 */
+.modern-btn {
+    flex: 1;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -93,15 +98,15 @@
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: white; /* 기본 배경 흰색 */
+    background-color: white;
     color: #333;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
+}
 
-    .icon-circle {
+.icon-circle {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -111,39 +116,41 @@
     justify-content: center;
     color: #333;
     font-size: 0.9rem;
-    }
+}
 
-    /* 도감 버튼 호버: 빨강 포인트 */
-    .pokedex-btn:hover {
+/* 도감 버튼 */
+.pokedex-btn:hover {
     transform: translateY(-3px);
     background-color: #E3350D;
     color: white;
-    }
-    .pokedex-btn:hover .icon-circle {
+}
+
+.pokedex-btn:hover .icon-circle {
     background-color: rgba(255,255,255,0.2);
     color: white;
-    }
+}
 
-    /* 퀴즈 버튼 호버: 파랑 포인트 */
-    .quiz-btn:hover {
+/* 퀴즈 버튼 */
+.quiz-btn:hover {
     transform: translateY(-3px);
     background-color: #3B4CCA;
     color: white;
-    }
-    .quiz-btn:hover .icon-circle {
+}
+
+.quiz-btn:hover .icon-circle {
     background-color: rgba(255,255,255,0.2);
     color: white;
-    }
+}
 
-    /* 푸터 (기존 유지) */
-    .home-footer {
+/* 푸터 */
+.home-footer {
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    }
+}
 
-    .github-link {
+.github-link {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -152,15 +159,29 @@
     font-weight: 500;
     font-size: 0.85rem;
     transition: color 0.3s;
-    }
+}
 
-    .github-link:hover { color: white; }
+.github-link:hover { 
+    color: white; 
+}
 
-    /* 모바일 전용 방 */
-    @media (max-width: 768px) {
+/* 모바일 대응 */
+@media (max-width: 768px) {
+
     .home-container::before {
-        /* 모바일에서는 억지로 늘리면 흉하니까, 비율 유지하면서 꽉 채우기 (가장자리는 좀 잘림) */
-        background-size: cover; 
+        background-size: cover;
         background-position: center center;
     }
+
+    .glass-card {
+        padding: 40px 30px;
     }
+
+    .home-main-logo {
+        width: 300px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
