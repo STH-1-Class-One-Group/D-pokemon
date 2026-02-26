@@ -32,10 +32,10 @@
     padding-bottom: 50px;
     }
 
-    /* 핵심 디자인: 유리 카드 컨테이너 (3번 사진 느낌) */
+    /* 핵심 디자인: 유리 카드 컨테이너 */
     .glass-card {
     background: rgba(0, 0, 0, 0.6); /* 반투명 검정 배경 */
-    backdrop-filter: blur(10px);     /* 뒷배경 흐리게 */
+    backdrop-filter: blur(15px);     /* 뒷배경 흐리게 */
     -webkit-backdrop-filter: blur(10px);
     
     padding: 60px 80px;
@@ -82,7 +82,7 @@
     justify-content: center;
     }
 
-    /* 모던 버튼 스타일 (2번 사진 참고) */
+    /* 모던 버튼 스타일 */
     .modern-btn {
     flex: 1; /* 버튼 크기 동일하게 */
     display: flex;

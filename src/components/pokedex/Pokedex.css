@@ -1,125 +1,191 @@
 /* src/components/pokedex/Pokedex.css */
 
-/* 전체 컨테이너 정렬 */
+/* --- 1. 전체 레이아웃 --- */
 .pokedex-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
+    /* 상단 여백 조정 (너무 넓으면 120px -> 100px로 줄이세요) */
+    padding: 100px 20px 40px 20px;
     
-    /* 헤더에 가려지지 않게 위쪽 여백만 늘렸습니다! (20px -> 120px) */
-    padding-top: 120px; 
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-
     display: flex;
     flex-direction: column;
-    align-items: center; /* 모든 요소를 중앙으로 */
-    gap: 24px;
+    align-items: center;
+    gap: 30px;
 }
 
-/* 1. 검색 섹션 (그대로 유지) */
+/* --- 2. 검색창 영역 --- */
 .search-section {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .search-input {
-    width: 80%;
+    width: 100%;
     max-width: 500px;
-    padding: 14px 24px;
+    padding: 16px 24px;
     border: 2px solid transparent;
-    border-radius: 30px; 
-    background-color: #e7e7e7; 
-    font-size: 1rem;
+    border-radius: 50px;
+    background-color: #f0f2f5;
+    font-size: 1.1rem;
     outline: none;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .search-input:focus {
     background-color: #fff;
     border-color: #ff5350;
-    box-shadow: 0 4px 12px rgba(255, 83, 80, 0.1);
+    box-shadow: 0 4px 15px rgba(255, 83, 80, 0.2);
 }
 
-/* 2. 퀴즈 배너 (그대로 유지) */
-.quiz-banner {
-    display: none; 
-}
-
-/* 3. 도감 제목 (그대로 유지) */
+/* --- 3. 타이틀 --- */
 .pokedex-container h1 {
-    font-size: 2.2rem !important;
-    font-weight: 800;
-    margin: 40px 0 10px 0 !important;
-    align-self: center; 
+    font-size: 2.5rem;
+    font-weight: 900;
     color: #333;
+    margin-bottom: 20px;
     position: relative;
 }
 
-/* 제목 하단 포인트 데코레이션 (그대로 유지) */
 .pokedex-container h1::after {
     content: "";
     display: block;
-    width: 40px;
-    height: 4px;
+    width: 60px;
+    height: 5px;
     background-color: #ff5350;
-    margin: 8px auto 0;
-    border-radius: 2px;
+    margin: 10px auto 0;
+    border-radius: 3px;
 }
 
-/* 4. 카드 그리드 (그대로 유지) */
+/* --- 4. 그리드 리스트 (레이아웃 핵심) --- */
 .pokemon-list {
     display: grid;
-    gap: 24px;
     width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-    margin-top: 20px;
+    gap: 20px; /* 카드 사이 간격 */
+    
+    /* 반응형 그리드 설정 */
+    grid-template-columns: repeat(2, 1fr); /* 모바일: 2열 */
+}
+
+@media (min-width: 768px) {
+    .pokemon-list {
+        grid-template-columns: repeat(3, 1fr); /* 태블릿: 3열 */
+    }
 }
 
 @media (min-width: 1024px) {
     .pokemon-list {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, 1fr); /* PC: 4열 */
     }
 }
 
-/* 개별 카드 디자인 (그대로 유지) */
-.pokemon-card {
-    background-color: #fff;
-    border-radius: 16px; 
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.25s ease;
+/* --- 5. 3D 카드 디자인 (여기가 깨짐 방지 핵심!) --- */
+
+/* 카드 틀 */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    /* 2:3 비율 강제 고정 */
+    aspect-ratio: 2 / 3;
+    perspective: 1000px; /* 3D 효과 필수 */
     cursor: pointer;
 }
 
-/* 💡 한글 이름이 잘 보이도록 추가한 스타일 (범인은 여기!) */
-.pokemon-card h3 {
-    margin: 5px 0 0 0;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #333;
-    /* 영어 첫글자 대문자 강제 변환을 해제해야 한글 데이터가 꼬이지 않습니다. */
-    text-transform: none !important; 
-}
-
-/* 마우스 올렸을 때 효과 (그대로 유지) */
-.pokemon-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-}
-
-.image-placeholder {
+/* 회전하는 알맹이 */
+.flip-card-inner {
+    position: relative;
     width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* 마우스 올렸을 때 회전 */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 앞면/뒷면 공통 (겹치기 위해 absolute 필수) */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    backface-visibility: hidden; /* 뒤집혔을 때 안 보이게 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* --- 앞면 디자인 --- */
+.flip-card-front {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* 번호 */
+.card-number {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #d1d5db;
+}
+
+/* 이미지 원형 배경 */
+.image-placeholder {
+    width: 70%;
     aspect-ratio: 1/1;
-    background-color: #f8f9fa !important;
-    border-radius: 12px;
-    margin-bottom: 12px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.image-placeholder img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+}
+
+/* 이름 */
+.card-name {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1f2937;
+    text-transform: none; /* 대문자 강제 변환 해제 */
+}
+
+/* --- 뒷면 디자인 --- */
+.flip-card-back {
+    background-color: #2c3e50;
+    transform: rotateY(180deg);
+}
+
+.flip-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 카드 꽉 채우도록 */
+}
+
+/* 로딩 컴포넌트 위치 */
+.observer-element {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
