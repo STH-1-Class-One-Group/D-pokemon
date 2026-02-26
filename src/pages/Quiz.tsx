@@ -19,6 +19,7 @@ const Quiz = () => {
     const MAX_QUIZ = 10;
 
     const fetchQuizData = async (isFirst: boolean = false) => {
+        // 시작 시 깜빡임 방지를 위해 isFirst가 true일 때만 전체 로딩(loading)을 사용합니다.
         if (isFirst) setLoading(true);
         else setIsNextLoading(true);
 
@@ -55,11 +56,12 @@ const Quiz = () => {
         }
     };
 
+    // ✅ 시작 버튼 클릭 시 깜빡임 수정 로직
     const startQuiz = async () => {
-        setLoading(true);
-        await fetchQuizData(false);
-        setIsStarted(true);
-        setLoading(false);
+        // 전체 화면 로딩 대신 버튼 클릭 후 조용히 데이터를 먼저 가져옵니다.
+        await fetchQuizData(false); 
+        // 데이터 로딩이 완료된 시점에 화면을 전환하여 깜빡임을 제거합니다.
+        setIsStarted(true); 
     };
 
     const handleAnswer = (id: number) => {
