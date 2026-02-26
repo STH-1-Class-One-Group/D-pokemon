@@ -1,94 +1,165 @@
-/* Quiz.module.css */
-.container {
+/* quiz.css */
+
+.quiz-page-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 85vh;
-    /* 화면 중앙 배치 */
-    text-align: center;
-    padding: 20px;
+    min-height: 100vh;
+    /* 포켓몬들이 모여있는 어두운 배경 느낌 */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1613771404721-1f92d799e49f?q=80&w=2069&auto=format&fit=crop') no-repeat center center/cover;
     font-family: 'Nanum Gothic', sans-serif;
+    color: white;
 }
 
-.title {
+/* 반투명 다크 카드 */
+.glass-card {
+    background: rgba(30, 35, 45, 0.85);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+}
+
+.main-title {
     font-size: 2.5rem;
     margin-bottom: 30px;
-    color: #3c5aa6;
+    color: #fff;
 }
 
-.card {
-    background-color: #f9f9f9;
-    border-radius: 25px;
-    padding: 30px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px;
-}
-
-.pokemonImage {
-    width: 300px;
-    height: 300px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
-}
-
-/* 정답/오답 메시지 크기 및 강조 */
-.message {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin: 20px 0;
-    min-height: 1.5em;
-}
-
-.correct {
-    color: #2ecc71;
-}
-
-.wrong {
-    color: #e74c3c;
-}
-
-.inputField {
-    width: 80%;
-    padding: 15px;
-    font-size: 1.2rem;
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    outline: none;
-}
-
-.inputField:focus {
-    border-color: #ffcb05;
-}
-
-.buttonGroup {
+/* 퀴즈 헤더 */
+.quiz-header {
     display: flex;
-    gap: 15px;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.btn {
-    padding: 12px 25px;
+.quiz-question {
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.quiz-score-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.quiz-subtitle {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+/* 실루엣 이미지 스타일 */
+.silhouette-container {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    margin-bottom: 30px;
+}
+
+.pokemon-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    transition: all 0.4s ease;
+}
+
+.silhouette {
+    filter: brightness(0);
+}
+
+.revealed {
+    filter: brightness(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+}
+
+/* 4지선다 그리드 */
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 18px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.option-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 정답/오답 상태 스타일 */
+.option-btn.correct {
+    border-color: #4caf50;
+    background: rgba(76, 175, 80, 0.2);
+    box-shadow: inset 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.option-btn.wrong {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.2);
+}
+
+/* 다음 버튼 */
+.next-step-btn {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    color: #ccc;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.next-step-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* 버튼 공통 스타일 (인트로) */
+.action-btn {
+    padding: 15px 30px;
+    border-radius: 50px;
     font-size: 1.1rem;
     font-weight: bold;
-    border: none;
-    border-radius: 10px;
     cursor: pointer;
-    transition: opacity 0.2s;
+    border: none;
+    width: 100%;
 }
 
-.btn:hover {
-    opacity: 0.8;
+.action-btn.primary {
+    background: #ffcb05;
+    color: #333;
 }
 
-.submitBtn {
-    background-color: #ffcb05;
-    color: #3c5aa6;
+.action-btn.secondary {
+    background: white;
+    color: #333;
+    margin-top: 10px;
 }
 
-.nextBtn {
-    background-color: #3c5aa6;
-    color: white;
+.button-group-vertical {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 0 auto;
 }
