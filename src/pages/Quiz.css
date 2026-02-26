@@ -1,0 +1,170 @@
+/* quiz.css */
+
+/* 오직 퀴즈 페이지 내부의 요소들에게만 스타일 적용 */
+.quiz-page-wrapper .quiz-page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1613771404721-1f92d799e49f?q=80&w=2069&auto=format&fit=crop') no-repeat center center/cover;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: white;
+}
+
+.quiz-page-wrapper .glass-card {
+    background: rgba(30, 35, 45, 0.85);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quiz-page-wrapper .main-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.quiz-page-wrapper .quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quiz-page-wrapper .quiz-question {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.quiz-page-wrapper .quiz-score-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.quiz-page-wrapper .quiz-subtitle {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.quiz-page-wrapper .silhouette-container {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    margin-bottom: 30px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-page-wrapper .pokemon-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    transition: all 0.4s ease;
+}
+
+.quiz-page-wrapper .silhouette {
+    filter: brightness(0);
+}
+
+.quiz-page-wrapper .revealed {
+    filter: brightness(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+}
+
+.quiz-page-wrapper .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.quiz-page-wrapper .option-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.quiz-page-wrapper .option-btn.correct {
+    border-color: #4caf50;
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.quiz-page-wrapper .option-btn.wrong {
+    border-color: #f44336;
+    background: rgba(244, 67, 54, 0.2);
+}
+
+.quiz-page-wrapper .next-step-btn {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.quiz-page-wrapper .action-btn {
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+.quiz-page-wrapper .action-btn.primary {
+    background: #ffcb05;
+    color: #333;
+}
+
+.quiz-page-wrapper .action-btn.secondary {
+    background: white;
+    color: #333;
+    margin-top: 10px;
+}
+
+.quiz-page-wrapper .button-group-vertical {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.quiz-page-wrapper .final-score-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px 0 30px 0;
+}
+
+.quiz-page-wrapper .score-value {
+    font-size: 3.5rem;
+    color: #ffcb05;
+    margin: 10px 0;
+    font-weight: 800;
+}
