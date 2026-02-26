@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../components/common/Loading";
 import "./Quiz.css";
-import { useNavigate } from "react-router-dom"; // 경로 이동을 위해 추가
+import { useNavigate } from "react-router-dom";
 
 const Quiz = () => {
-    const navigate = useNavigate(); // ✅ 도감 이동을 위한 네비게이트 함수
+    const navigate = useNavigate();
     const [isStarted, setIsStarted] = useState(false);
     const [options, setOptions] = useState<any[]>([]);
     const [correctPokemon, setCorrectPokemon] = useState<any>(null);
@@ -18,7 +18,6 @@ const Quiz = () => {
     const [selectedId, setSelectedId] = useState<number | null>(null);
     const MAX_QUIZ = 10;
 
-    // ✅ 퀴즈 데이터 가져오기 로직 (깜빡임 방지 최적화)
     const fetchQuizData = async (isFirst: boolean = false) => {
         if (isFirst) setLoading(true);
         else setIsNextLoading(true);
@@ -51,17 +50,15 @@ const Quiz = () => {
         } catch (error) {
             console.error("데이터 로드 실패", error);
         } finally {
-            // ✅ 데이터 로딩이 완전히 끝난 후 로딩 바를 닫음
             setLoading(false);
             setIsNextLoading(false);
         }
     };
 
-    // ✅ 시작 버튼 클릭 시 깜빡임 방지 로직
     const startQuiz = async () => {
-        setLoading(true); // 먼저 로딩을 띄우고
-        await fetchQuizData(false); // 데이터를 가져온 뒤
-        setIsStarted(true); // 시작 상태로 변경 (깜빡임 최소화)
+        setLoading(true);
+        await fetchQuizData(false);
+        setIsStarted(true);
         setLoading(false);
     };
 
@@ -82,88 +79,80 @@ const Quiz = () => {
             setQuizCount(prev => prev + 1);
             fetchQuizData(false);
         } else {
-            setIsFinished(true); // ✅ 10문제가 끝나면 결과 화면으로
+            setIsFinished(true);
         }
     };
 
-    // 1️⃣ 인트로 화면
-    if (!isStarted) {
-        return (
-            <div className="quiz-page-container">
-                <div className="glass-card intro-card">
-                    <h1 className="main-title">포켓몬 능력 고사</h1>
-                    <div className="button-group-vertical">
-                        <button onClick={startQuiz} className="action-btn primary">퀴즈 시작하기!</button>
-                        {/* ✅ 경로를 /pokedex로 변경 */}
-                        <button onClick={() => navigate("/pokedex")} className="action-btn secondary">도감 공부하기</button>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    // 2️⃣ 로딩 화면 (전체 화면 깜빡임 방지를 위해 최상단 유지)
+    // 로딩 화면
     if (loading) return <Loading />;
 
-    // 3️⃣ 결과 화면 (10개 문제 종료 후)
-    if (isFinished) {
-        return (
-            <div className="quiz-page-container">
-                <div className="glass-card result-card">
-                    <h1 className="main-title">퀴즈 종료!</h1>
-                    <div className="final-score-box">
-                        <p className="score-label">최종 점수</p>
-                        <h2 className="score-value">{score} / {MAX_QUIZ}</h2>
-                    </div>
-                    <p className="result-comment">
-                        {score >= 8 ? "당신은 진정한 포켓몬 마스터! 🏆" : "조금 더 공부하면 마스터가 될 수 있어요! 💪"}
-                    </p>
-                    <div className="button-group-vertical">
-                        <button onClick={() => window.location.reload()} className="action-btn primary">다시 도전하기</button>
-                        <button onClick={() => navigate("/")} className="action-btn secondary">홈으로 돌아가기</button>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    // 4️⃣ 메인 퀴즈 화면
+    // 메인 렌더링 (범위를 가두기 위해 quiz-page-wrapper 추가)
     return (
-        <div className="quiz-page-container">
-            <div className={`glass-card quiz-main ${isNextLoading ? "fetching" : ""}`}>
-                <div className="quiz-header">
-                    <h2 className="quiz-question">이 포켓몬은 누구일까요?</h2>
-                    <span className="quiz-score-badge">문제 {quizCount} / {MAX_QUIZ}</span>
-                </div>
-                <p className="quiz-subtitle">{message}</p>
+        <div className="quiz-page-wrapper">
+            <div className="quiz-page-container">
+                {!isStarted ? (
+                    /* 인트로 화면 */
+                    <div className="glass-card intro-card">
+                        <h1 className="main-title">포켓몬 능력 고사</h1>
+                        <div className="button-group-vertical">
+                            <button onClick={startQuiz} className="action-btn primary">퀴즈 시작하기!</button>
+                            <button onClick={() => navigate("/pokedex")} className="action-btn secondary">도감 공부하기</button>
+                        </div>
+                    </div>
+                ) : isFinished ? (
+                    /* 결과 화면 */
+                    <div className="glass-card result-card">
+                        <h1 className="main-title">퀴즈 종료!</h1>
+                        <div className="final-score-box">
+                            <p className="score-label">최종 점수</p>
+                            <h2 className="score-value">{score} / {MAX_QUIZ}</h2>
+                        </div>
+                        <p className="result-comment">
+                            {score >= 8 ? "당신은 진정한 포켓몬 마스터! 🏆" : "조금 더 공부하면 마스터가 될 수 있어요! 💪"}
+                        </p>
+                        <div className="button-group-vertical">
+                            <button onClick={() => window.location.reload()} className="action-btn primary">다시 도전하기</button>
+                            <button onClick={() => navigate("/")} className="action-btn secondary">홈으로 돌아가기</button>
+                        </div>
+                    </div>
+                ) : (
+                    /* 퀴즈 진행 화면 */
+                    <div className={`glass-card quiz-main ${isNextLoading ? "fetching" : ""}`}>
+                        <div className="quiz-header">
+                            <h2 className="quiz-question">이 포켓몬은 누구일까요?</h2>
+                            <span className="quiz-score-badge">문제 {quizCount} / {MAX_QUIZ}</span>
+                        </div>
+                        <p className="quiz-subtitle">{message}</p>
 
-                <div className="silhouette-container">
-                    <img
-                        src={correctPokemon?.image}
-                        className={`pokemon-img ${isAnswered ? "revealed" : "silhouette"} ${isNextLoading ? "loading-img" : ""}`}
-                        alt="pokemon"
-                    />
-                </div>
+                        <div className="silhouette-container">
+                            <img
+                                src={correctPokemon?.image}
+                                className={`pokemon-img ${isAnswered ? "revealed" : "silhouette"} ${isNextLoading ? "loading-img" : ""}`}
+                                alt="pokemon"
+                            />
+                        </div>
 
-                <div className="options-grid">
-                    {options.map((opt) => (
-                        <button
-                            key={opt.id}
-                            disabled={isNextLoading || isAnswered}
-                            onClick={() => handleAnswer(opt.id)}
-                            className={`option-btn ${isAnswered ? (opt.id === correctPokemon.id ? "correct" : opt.id === selectedId ? "wrong" : "") : ""}`}
-                        >
-                            {isAnswered && opt.id === correctPokemon.id && <span className="icon">✔</span>}
-                            {isAnswered && opt.id === selectedId && opt.id !== correctPokemon.id && <span className="icon">✖</span>}
-                            {opt.name}
-                        </button>
-                    ))}
-                </div>
+                        <div className="options-grid">
+                            {options.map((opt) => (
+                                <button
+                                    key={opt.id}
+                                    disabled={isNextLoading || isAnswered}
+                                    onClick={() => handleAnswer(opt.id)}
+                                    className={`option-btn ${isAnswered ? (opt.id === correctPokemon.id ? "correct" : opt.id === selectedId ? "wrong" : "") : ""}`}
+                                >
+                                    {isAnswered && opt.id === correctPokemon.id && <span className="icon">✔</span>}
+                                    {isAnswered && opt.id === selectedId && opt.id !== correctPokemon.id && <span className="icon">✖</span>}
+                                    {opt.name}
+                                </button>
+                            ))}
+                        </div>
 
-                {isAnswered && (
-                    <button onClick={handleNext} className="next-step-btn">
-                        {quizCount === MAX_QUIZ ? "결과 보기" : "다음 문제"}
-                    </button>
+                        {isAnswered && (
+                            <button onClick={handleNext} className="next-step-btn">
+                                {quizCount === MAX_QUIZ ? "결과 보기" : "다음 문제"}
+                            </button>
+                        )}
+                    </div>
                 )}
             </div>
         </div>

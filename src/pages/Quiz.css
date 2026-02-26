@@ -1,19 +1,18 @@
 /* quiz.css */
 
-.quiz-page-container {
+/* 오직 퀴즈 페이지 내부의 요소들에게만 스타일 적용 */
+.quiz-page-wrapper .quiz-page-container {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    /* 포켓몬들이 모여있는 어두운 배경 느낌 */
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url('https://images.unsplash.com/photo-1613771404721-1f92d799e49f?q=80&w=2069&auto=format&fit=crop') no-repeat center center/cover;
     font-family: 'Nanum Gothic', sans-serif;
     color: white;
 }
 
-/* 반투명 다크 카드 */
-.glass-card {
+.quiz-page-wrapper .glass-card {
     background: rgba(30, 35, 45, 0.85);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -21,85 +20,78 @@
     border-radius: 24px;
     padding: 40px;
     width: 90%;
-    max-width: 600px; /* 카드가 너무 넓지 않게 조정 */
+    max-width: 600px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     text-align: center;
     position: relative;
-    /* 시작 시 깜빡임/흔들림 방지를 위한 최소 높이 설정 */
     min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.main-title {
+.quiz-page-wrapper .main-title {
     font-size: 2.5rem;
     margin-bottom: 30px;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-/* 퀴즈 헤더 */
-.quiz-header {
+.quiz-page-wrapper .quiz-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.quiz-question {
+.quiz-page-wrapper .quiz-question {
     font-size: 1.6rem;
     margin: 0;
 }
 
-.quiz-score-badge {
+.quiz-page-wrapper .quiz-score-badge {
     background: rgba(255, 255, 255, 0.1);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.quiz-subtitle {
+.quiz-page-wrapper .quiz-subtitle {
     color: #aaa;
     margin-bottom: 30px;
-    font-size: 1rem;
 }
 
-/* 실루엣 이미지 스타일 */
-.silhouette-container {
+.quiz-page-wrapper .silhouette-container {
     background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
     margin-bottom: 30px;
-    height: 220px; /* 높이 고정으로 깜빡임 방지 */
+    height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.pokemon-img {
+.quiz-page-wrapper .pokemon-img {
     width: 200px;
     height: 200px;
     object-fit: contain;
     transition: all 0.4s ease;
 }
 
-.silhouette {
+.quiz-page-wrapper .silhouette {
     filter: brightness(0);
 }
 
-.revealed {
+.quiz-page-wrapper .revealed {
     filter: brightness(1) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
 }
 
-/* 4지선다 그리드 */
-.options-grid {
+.quiz-page-wrapper .options-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
     margin-bottom: 25px;
 }
 
-.option-btn {
+.quiz-page-wrapper .option-btn {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
@@ -114,29 +106,17 @@
     transition: all 0.2s;
 }
 
-.option-btn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-.option-btn:disabled {
-    cursor: default;
-}
-
-/* 정답/오답 상태 스타일 */
-.option-btn.correct {
+.quiz-page-wrapper .option-btn.correct {
     border-color: #4caf50;
     background: rgba(76, 175, 80, 0.2);
-    box-shadow: inset 0 0 10px rgba(76, 175, 80, 0.3);
 }
 
-.option-btn.wrong {
+.quiz-page-wrapper .option-btn.wrong {
     border-color: #f44336;
     background: rgba(244, 67, 54, 0.2);
 }
 
-/* 다음 버튼 */
-.next-step-btn {
+.quiz-page-wrapper .next-step-btn {
     width: 100%;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -144,17 +124,10 @@
     padding: 15px;
     color: #fff;
     font-size: 1.1rem;
-    font-weight: bold;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
-.next-step-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* 버튼 공통 스타일 (인트로/결과) */
-.action-btn {
+.quiz-page-wrapper .action-btn {
     padding: 15px 30px;
     border-radius: 50px;
     font-size: 1.1rem;
@@ -162,59 +135,36 @@
     cursor: pointer;
     border: none;
     width: 100%;
-    transition: transform 0.1s;
 }
 
-.action-btn:active {
-    transform: scale(0.98);
-}
-
-.action-btn.primary {
+.quiz-page-wrapper .action-btn.primary {
     background: #ffcb05;
     color: #333;
-    box-shadow: 0 4px 15px rgba(255, 203, 5, 0.3);
 }
 
-.action-btn.secondary {
+.quiz-page-wrapper .action-btn.secondary {
     background: white;
     color: #333;
     margin-top: 10px;
 }
 
-.button-group-vertical {
+.quiz-page-wrapper .button-group-vertical {
     display: flex;
     flex-direction: column;
     width: 250px;
     margin: 0 auto;
 }
 
-/* ✅ 결과 화면 전용 스타일 추가 */
-.final-score-box {
+.quiz-page-wrapper .final-score-box {
     background: rgba(255, 255, 255, 0.05);
     padding: 30px;
     border-radius: 20px;
     margin: 20px 0 30px 0;
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.score-label {
-    color: #aaa;
-    margin: 0;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.score-value {
+.quiz-page-wrapper .score-value {
     font-size: 3.5rem;
     color: #ffcb05;
     margin: 10px 0;
     font-weight: 800;
-    text-shadow: 0 0 20px rgba(255, 203, 5, 0.4);
-}
-
-.result-comment {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    line-height: 1.5;
 }
