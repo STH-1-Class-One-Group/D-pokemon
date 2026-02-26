@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Pokedex.css';
-// import PokemonModal from './PokemonModal'; 
+import PokemonModal from './PokemonModal'; 
 import cardBackImg from '../../assets/cardback.jpg'; 
 
 interface PokemonCardProps {
@@ -60,7 +60,7 @@ function PokemonCard({ id, name, url, korean_name }: PokemonCardProps) {
 
                 </div>
             </div>
-            {/* {isModalOpen && <PokemonModal id={safeId} onClose={() => setIsModalOpen(false)} />} */}
+            {isModalOpen && <PokemonModal id={safeId} onClose={() => setIsModalOpen(false)} />}
         </>
     );
 }

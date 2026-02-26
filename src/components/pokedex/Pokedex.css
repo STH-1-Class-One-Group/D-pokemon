@@ -189,3 +189,143 @@
     justify-content: center;
     align-items: center;
 }
+
+/* --- 모달 (Popup) 디자인 --- */
+/* 1. 어두운 배경 (Overlay) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(5px); /* 사파리 & 구형 브라우저용 */
+    backdrop-filter: blur(5px);         /* 표준 브라우저용 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+/* 2. 하얀색 팝업창 */
+.modal-content {
+    background-color: #fff;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh; /* 화면 넘어가지 않게 */
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow-y: auto; /* 내용 길면 스크롤 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: slideUp 0.3s ease;
+}
+
+/* 닫기 버튼 */
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #888;
+}
+
+/* 헤더 */
+.modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.modal-header h2 { margin: 0; font-size: 2rem; color: #333; }
+.modal-id { font-size: 1.1rem; color: #888; font-weight: bold; }
+
+/* 본문 레이아웃 (좌우 배치) */
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* 왼쪽 (이미지) */
+.modal-section-left {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal-image { width: 100%; max-width: 200px; }
+.modal-stats { margin-top: 10px; font-size: 1.1rem; color: #555; }
+
+/* 오른쪽 (정보) */
+.modal-section-right {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 태그 디자인 */
+.info-group h3 { margin: 0 0 8px 0; font-size: 1rem; color: #333; }
+.tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* 타입 태그 */
+.type-tag {
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background-color: #777; /* 기본색 */
+}
+/* 몇 가지 주요 타입 색상 (원하면 더 추가 가능) */
+.type-tag.풀 { background-color: #78C850; }
+.type-tag.불꽃 { background-color: #F08030; }
+.type-tag.물 { background-color: #6890F0; }
+.type-tag.전기 { background-color: #F8D030; }
+.type-tag.노말 { background-color: #A8A878; }
+
+/* 특성 태그 */
+.ability-tag {
+    background-color: #e0f7fa;
+    color: #006064;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* 도감 설명 박스 */
+.description-box {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* 하단: 기술 목록 */
+.modal-footer {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.moves-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.move-tag {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
