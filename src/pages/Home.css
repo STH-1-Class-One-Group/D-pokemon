@@ -24,7 +24,7 @@
     background-size: 100% 100%;
     background-position: center;
     z-index: -2;
-    filter: brightness(0.6);
+    filter: brightness(0.5);
 }
 
 .home-content {
@@ -37,7 +37,7 @@
 
 /* 유리 카드 */
 .glass-card {
-    background: rgba(0, 0, 0, 0.45);  /* 너무 어둡지 않게 조정 */
+    background: rgba(0, 0, 0, 0.50);  /* 너무 어둡지 않게 조정 */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
