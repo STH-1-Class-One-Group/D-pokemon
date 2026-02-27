@@ -1,9 +1,9 @@
 # 🐾 DOKEMON (도케몬)
 > **탐색과 도전이 함께하는 나만의 포켓몬 도감 & 퀴즈 플랫폼**
 
-💡 프로젝트 소개
+프로젝트 소개
 **DOKEMON**은 어릴 적 즐겨보던 포켓몬스터의 향수를 현대적이고 세련된 웹 UI로 재해석한 프로젝트입니다. 
-단순히 포켓몬의 정보를 나열하는 것을 넘어, **Glassmorphism(유리 질감)**과 **다크 테마**를 적용하여 깊이 있는 몰입감을 제공합니다. 포켓몬의 상세 정보를 탐색하고, 실루엣 퀴즈를 통해 나의 포켓몬 지식을 테스트해보세요!
+단순히 포켓몬의 정보를 나열하는 것을 넘어, Glassmorphism(유리 질감)과 다크 테마를 적용하여 깊이 있는 몰입감을 제공합니다. 포켓몬의 상세 정보를 탐색하고, 실루엣 퀴즈를 통해 나의 포켓몬 지식을 테스트해보세요!
 <img width="1919" height="904" alt="image" src="https://github.com/user-attachments/assets/9dbc24fa-053e-4055-9324-ede2907b9420" />
 <br/>
 
@@ -12,7 +12,7 @@
 
 <br/>
 
-## ✨ 주요 기능 (Key Features)
+## 주요 기능 (Key Features)
 
 ### 1. 포켓몬 도감 (Pokedex)
 * **3D Flip Card UI**: 마우스를 올리면 부드럽게 뒤집히는 3D 카드 애니메이션 적용.
@@ -30,7 +30,7 @@
 
 <br/>
 
-## 🛠 기술 스택 (Tech Stack)
+## 기술 스택 (Tech Stack)
 * **Frontend**: React, TypeScript, React Router
 * **Styling**: Vanilla CSS (CSS Grid, Flexbox, Glassmorphism, CSS 3D Animations)
 * **API**: PokeAPI (포켓몬 데이터 연동)
