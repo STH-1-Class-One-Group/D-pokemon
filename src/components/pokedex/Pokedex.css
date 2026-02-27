@@ -329,3 +329,30 @@
 /* 애니메이션 */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+@media (max-width: 768px) {
+    .pokemon-list {
+        /* 모바일에서 무조건 2개씩 뜨도록 2열 강제 고정 */
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px; /* 모바일 화면에 맞게 카드 사이 간격 축소 */
+    }
+    
+    .flip-card {
+        /* 모바일에서는 최대 너비 제한을 풀어서 2칸을 꽉 채우게 함 */
+        max-width: 100% !important; 
+    }
+
+    .pokedex-container {
+        /* 모바일에서는 폰이 작으니 좌우 여백을 줄임 */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    /* 모바일 환경에 맞게 글씨와 이미지 크기 살짝 다듬기 */
+    .card-name { 
+        font-size: 1.1rem; 
+    }
+    .image-placeholder { 
+        margin-bottom: 10px; 
+    }
+}
